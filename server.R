@@ -34,7 +34,17 @@ function(input, output, session) {
                              selected = unique(uploaded_data()$Species),
                              inline = TRUE
     )
+    
+    numeric_cols <- sapply(uploaded_data(), is.numeric)
+    numeric_names <- names(uploaded_data())[numeric_cols]
+    
+    updateSelectInput(session,
+                      inputId = "x_variable",
+                      choices = numeric_names,
+                      selected = numeric_names[1],
+    )
   })
+  
   
   data <- reactive({
     req(uploaded_data())
@@ -42,6 +52,7 @@ function(input, output, session) {
     df
   })
 
+  
 
 # HOME - OUPTUT -----------------------------------------------------------
 

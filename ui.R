@@ -1,7 +1,7 @@
 ## appearance
 
 ## with shinydashboard
-header <- dashboardHeader(title = "S Campbell Assessment 2023")
+header <- dashboardHeader(title = "Shinyapp")
 
 sidebar <- dashboardSidebar(
   sidebarMenu(
@@ -85,8 +85,8 @@ body <- dashboardBody(
                                            size = "small",
                                            selectInput(inputId = 'x_variable',
                                                        label = "Select the abscissa of the plot",
-                                                       choices = list_quantitative_columns,
-                                                       selected = list_quantitative_columns[1]),
+                                                       choices = "",
+                                                       selected = ""),
                                            selectInput(inputId = 'y_variable',
                                                        label = "Select the ordinate of the plot",
                                                        choices = list_quantitative_columns,
