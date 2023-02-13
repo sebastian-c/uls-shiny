@@ -66,7 +66,7 @@ body <- dashboardBody(
                # )
       ),
       br(),
-      fluidRow(box(title = "Visualize data",
+      fluidRow(box(title = "Visualise data",
                    solidHeader = TRUE,
                    width = 12,
                    status = "primary",
@@ -75,7 +75,7 @@ body <- dashboardBody(
                    tabBox(width = 12,
                           tabPanel("Plot",
                                    actionBttn(inputId = "bttn_custom_plot",
-                                              label = "Custom the plot",
+                                              label = "Customise",
                                               size = "sm",
                                               color = "primary",
                                               style = "simple"),
