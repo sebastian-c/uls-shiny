@@ -12,10 +12,11 @@ function(input, output, session) {
     req(input$file_upload)
     
     df <- read.csv(file = input$file_upload$datapath,
-                   sep = ";",
+                   sep = input$file_separator,
                    header = TRUE,
                    stringsAsFactors = FALSE) %>% as.data.frame()
-    str(df)
+    
+    show("filter_row")
     
     sendSweetAlert(session,
                    title = "Great!",
