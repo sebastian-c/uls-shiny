@@ -7,32 +7,36 @@ function(input, output, session) {
   plot_ggplot <- reactiveVal("")
   
   uploaded_data <- reactive({
-    #write.table(iris, "iris.csv", sep = ";", dec = ".", col.names = TRUE, row.names = FALSE)
-    
+
     req(input$file_upload)
     
     df <- read.csv(file = input$file_upload$datapath,
                    sep = input$file_separator,
                    header = TRUE,
-                   stringsAsFactors = FALSE) %>% as.data.frame()
+                   stringsAsFactors = FALSE)
     
     show("filter_row")
     
     sendSweetAlert(session,
-                   title = "Great!",
-                   text = "Your file is well loaded",
+                   title = "Great victory!",
+                   text = "File successfully loaded",
                    type = "success",
-                   btn_labels = "Close the window")
+                   btn_labels = "Close window")
     
     df
   })
-  
+
+    
   observe({
     req(uploaded_data())
+    
+    first_character_name = names(uploaded_data())[sapply(uploaded_data(), is.character)][1]
+    selections = unique(uploaded_data()[, first_character_name])
+    
     updateCheckboxGroupInput(session,
-                             inputId = "species_filter",
-                             choices = unique(uploaded_data()$Species),
-                             selected = unique(uploaded_data()$Species),
+                             inputId = "character_filter",
+                             choices = selections,
+                             selected = selections,
                              inline = TRUE
     )
     
@@ -49,11 +53,10 @@ function(input, output, session) {
   
   data <- reactive({
     req(uploaded_data())
-    df <- uploaded_data() %>% filter(Species %in% as.character(input$species_filter))
+    df <- uploaded_data() %>% filter(Species %in% as.character(input$character_filter))
     df
   })
 
-  
 
 # HOME - OUPTUT -----------------------------------------------------------
 
@@ -62,7 +65,7 @@ function(input, output, session) {
     paste("The dataset contains", nb_lines, "rows")
   })
 
-  output$plot_iris <- renderPlot({
+  output$plot_data <- renderPlot({
     # plot(data$Sepal.Length, data$Sepal.Width)
     g <- ggplot(data(),
            aes(x = data()[, as.character(input$x_variable)],
@@ -87,14 +90,14 @@ function(input, output, session) {
            )
     
     sendSweetAlert(session,
-                   title = "Great!",
-                   text = "Your graph is well saved",
+                   title = "Great victory!",
+                   text = "Graph saved successfully",
                    type = "success")
     
   })
   
   
-  output$table_iris <- renderDataTable({
+  output$table_data <- renderDataTable({
     datatable(data())
   })
 

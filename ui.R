@@ -40,7 +40,8 @@ body <- dashboardBody(tabItems(
           inputId = "file_separator",
           label = "Field separator",
           choiceNames = c("Comma (,)", "Semi-colon (;)"),
-          choiceValues = c(",", ";")
+          choiceValues = c(",", ";"),
+          selected = ";"
         )
       ),
     ),
@@ -52,12 +53,10 @@ body <- dashboardBody(tabItems(
         status = "primary",
         #primary, success, info, warning, danger
         checkboxGroupInput(
-          inputId = "species_filter",
+          inputId = "character_filter",
           label = "Select a species",
           choices = "",
-          #c("setosa", "versicolor", "virginica"),
           selected = "",
-          # c("setosa", "versicolor", "virginica"),
           inline = TRUE
         )
       )
@@ -102,7 +101,7 @@ body <- dashboardBody(tabItems(
               textInput(inputId = "plot_title",
                         label = "Enter here the title of the plot")
             ),
-            plotOutput("plot_iris"),
+            plotOutput("plot_data"),
             actionBttn(
               inputId = "save_plot",
               label = "Save the plot",
@@ -113,7 +112,7 @@ body <- dashboardBody(tabItems(
             )
           ),
           tabPanel("Table",
-                   DT::dataTableOutput("table_iris"))
+                   DT::dataTableOutput("table_data"))
         )
       )
     )
