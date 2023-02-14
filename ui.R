@@ -52,11 +52,15 @@ body <- dashboardBody(tabItems(
         width = 4,
         status = "primary",
         #primary, success, info, warning, danger
+        selectInput(
+          inputId = "character_select",
+          label = "Select a character column",
+          choices = NULL,
+          selected = NULL
+        ),
         checkboxGroupInput(
           inputId = "character_filter",
-          label = "Select a species",
-          choices = "",
-          selected = "",
+          label = "Select factors to include",
           inline = TRUE
         )
       )
@@ -95,8 +99,8 @@ body <- dashboardBody(tabItems(
               selectInput(
                 inputId = 'y_variable',
                 label = "Select the ordinate of the plot",
-                choices = list_quantitative_columns,
-                selected = list_quantitative_columns[2]
+                choices = "",
+                selected = ""
               ),
               textInput(inputId = "plot_title",
                         label = "Enter here the title of the plot")

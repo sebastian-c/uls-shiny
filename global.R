@@ -14,3 +14,7 @@ list_quantitative_columns <- c("Sepal.Length",
                                "Sepal.Width",
                                "Petal.Length",
                                "Petal.Width")
+
+getConditionColNames <- function(data, condition){
+  names(data)[vapply(data, condition, logical(1))]
+}
