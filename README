@@ -1,0 +1,9 @@
+# UniLaSalle Shiny project
+
+##Availability
+
+This app is available on ShinyApps.io: https://pascalian.shinyapps.io/shiny_assessment/
+
+## Setup
+
+The app is ready to be run with Shiny. You can use Rstudio's "Run App" option or  `shiny::runApp` if you're old school and just like automation. If you'd like to generate some test files, `create_test_set.R` will generate some test files for you to use on the app.
