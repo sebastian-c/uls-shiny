@@ -1,6 +1,6 @@
 # UniLaSalle Shiny project
 
-##Availability
+## Availability
 
 This app is available on ShinyApps.io: https://pascalian.shinyapps.io/shiny_assessment/
 
@@ -17,7 +17,7 @@ The app contains:
 - [X] Shinydashboard
 - [X] Separator selection for uploaded files
 - [X] Display of table content
-- [] Numeric column selection for densityplot
-- [] Character column selection for frequency bar chart
+- [ ] Numeric column selection for densityplot
+- [ ] Character column selection for frequency bar chart
 - [X] Select character cols and numeric cols for ggplot
-- [] Submission of assignment
+- [ ] Submission of assignment
