@@ -10,4 +10,14 @@ The app is ready to be run with Shiny. You can use Rstudio's "Run App" option or
 
 # Features
 
-THe app starts with the showcase at the bottom so that the app displays properly across the width of the screen.
+The app starts with the showcase at the bottom so that the app displays properly across the width of the screen. The showcase can be brought back up with the button on its top-left.
+
+The app contains:
+
+- [X] Shinydashboard
+- [X] Separator selection for uploaded files
+- [X] Display of table content
+- [] Numeric column selection for densityplot
+- [] Character column selection for frequency bar chart
+- [X] Select character cols and numeric cols for ggplot
+- [] Submission of assignment
