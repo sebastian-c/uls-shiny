@@ -6,18 +6,11 @@
 header <- dashboardHeader(title = "Shinyapp")
 
 sidebar <- dashboardSidebar(useShinyjs(),
-                            sidebarMenu(
-                              menuItem(
-                                text = "Home",
-                                tabName = "home",
-                                icon = icon("home")
-                              ),
-                              menuItem(
-                                text = "Plotly",
-                                tabName = "plotly",
-                                icon = icon("chart-line")
-                              )
-                            ))
+                            sidebarMenu(menuItem(
+                              text = "Home",
+                              tabName = "home",
+                              icon = icon("home")
+                            )))
 
 body <- dashboardBody(tabItems(
   tabItem(
@@ -118,19 +111,6 @@ body <- dashboardBody(tabItems(
           tabPanel("Table",
                    DT::dataTableOutput("table_data"))
         )
-      )
-    )
-  ),
-  tabItem(
-    tabName = "plotly",
-    h3("Discovering the {plotly} package"),
-    fluidRow(
-      box(
-        title = strong("Graph with plotly package"),
-        width = 12,
-        status = "primary",
-        solidHeader = TRUE,
-        plotlyOutput("graph_plotly")
       )
     )
   )

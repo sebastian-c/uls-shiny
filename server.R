@@ -39,7 +39,6 @@ function(input, output, session) {
     req(uploaded_data())
     
     character_names = getConditionColNames(uploaded_data(), is.character)
-    #selections = unique(uploaded_data()[, first_character_name])
     
     updateSelectInput(
       session,
@@ -106,7 +105,7 @@ function(input, output, session) {
   output$plot_data <- renderPlot({
     req(data())
     req(input$character_filter)
-    # plot(data$Sepal.Length, data$Sepal.Width)
+
     g <- ggplot(data(),
                 aes(
                   x = data()[, as.character(input$x_variable)],
@@ -142,29 +141,5 @@ function(input, output, session) {
     datatable(data())
   })
   
-  
-  # PLOTLY - OUTPUT ---------------------------------------------------------
-  
-  output$graph_plotly <- renderPlotly({
-    data <- mtcars
-    
-    data <- data %>% mutate(car_name = rownames(data))
-    
-    plot_ly(
-      data = data,
-      x = ~ hp,
-      y = ~ qsec,
-      color = ~ factor(cyl),
-      type = "scatter",
-      mode = "markers",
-      hoverinfo = "text",
-      text = ~ paste0("Car: ", car_name, "<br>", gear, " gears")
-    ) %>%
-      layout(
-        xaxis = list(title = "horse power"),
-        yaxis = list(title = "secondes for 1/4 miles")
-      )
-    
-  })
   
 }
