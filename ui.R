@@ -16,16 +16,17 @@ body <- dashboardBody(tabItems(
   tabItem(
     tabName = "home",
     h3("Discovering the iris dataset"),
-    fluidRow(
+    fluidRow(column(
+      4,
       box(
         title = strong("Load data"),
         solidHeader = TRUE,
-        width = 4,
+        width = 12,
         status = "primary",
         fileInput(
           inputId = "file_upload",
           label = "Upload your local file",
-          buttonLabel = "Click here!",
+          buttonLabel = "Click to upload!",
           accept = c(".csv", ".txt"),
           placeholder = "No file loaded"
         ),
@@ -36,26 +37,34 @@ body <- dashboardBody(tabItems(
           choiceValues = c(",", ";"),
           selected = ";"
         )
-      ),
-        box(
-          title = "Density plot",
-          solidHeader = TRUE,
-          status = "primary",
-          selectInput(
-            inputId = "density_num_select",
-            label = "Select a numeric column",
-            choices = NULL,
-            selected = NULL
-          ),
-          plotOutput("density_plot")
+      )
+    ),
+    column(
+      4,
+      box(
+        title = "Density plot",
+        solidHeader = TRUE,
+        width = 12,
+        status = "primary",
+        selectInput(
+          inputId = "density_num_select",
+          label = "Select a numeric column",
+          choices = NULL,
+          selected = NULL
         ),
+        plotOutput("density_plot")
+      )
+    ),
+    column(
+      4,
       box(
         title = "Frequency barchart",
         solidHeader = TRUE,
+        width = 12,
         status = "primary",
         plotOutput("frequency_barchart")
       )
-    ),
+    )),
     hidden(div(id = "filter_row", fluidRow(
       box(
         title = "Filtering the dataset",
