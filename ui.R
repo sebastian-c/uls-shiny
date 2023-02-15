@@ -37,19 +37,20 @@ body <- dashboardBody(tabItems(
           selected = ";"
         )
       ),
-      box(
-        title = "Density plot",
-        solidHeader = TRUE,
-        width = 4,
-        status = "primary",
-        selectInput(
-          inputId = "density_num_select",
-          label = "Select a numeric column",
-          choices = NULL,
-          selected = NULL
-        ),
-        br(),
-        plotOutput("density_plot")
+      column(
+        width = 8,
+        box(
+          title = "Density plot",
+          solidHeader = TRUE,
+          status = "primary",
+          selectInput(
+            inputId = "density_num_select",
+            label = "Select a numeric column",
+            choices = NULL,
+            selected = NULL
+          ),
+          plotOutput("density_plot")
+        )
       )
     ),
     hidden(div(id = "filter_row", fluidRow(
