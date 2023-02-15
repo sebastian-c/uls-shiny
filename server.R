@@ -39,12 +39,20 @@ function(input, output, session) {
     req(uploaded_data())
     
     character_names = getConditionColNames(uploaded_data(), is.character)
+    numeric_names = getConditionColNames(uploaded_data(), is.numeric)
     
     updateSelectInput(
       session,
       inputId = "character_select",
       choices = character_names,
       selected = character_names[1]
+    )
+    
+    updateSelectInput(
+      session,
+      inputId = "density_num_select",
+      choices = numeric_names,
+      selected = numeric_names[1]
     )
     
   })
@@ -97,6 +105,15 @@ function(input, output, session) {
   
   # HOME - OUTPUT -----------------------------------------------------------
   
+  output$density_plot <- renderPlot({
+    
+    dplot <- ggplot(data(), aes(x = !!as.symbol(input$density_num_select))) +
+      geom_density()
+    
+    dplot
+    
+  })
+  
   output$text_nb_lines <- renderText({
     nb_lines <- nrow(data())
     paste("The dataset contains", nb_lines, "rows")
@@ -123,6 +140,7 @@ function(input, output, session) {
     
     g
   })
+  
   
   observeEvent(input$save_plot, {
     filename = paste0("figure_", format(Sys.time(), "%Y%m%d%H%M%S"), ".png")
