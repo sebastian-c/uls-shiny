@@ -37,8 +37,6 @@ body <- dashboardBody(tabItems(
           selected = ";"
         )
       ),
-      column(
-        width = 8,
         box(
           title = "Density plot",
           solidHeader = TRUE,
@@ -50,7 +48,12 @@ body <- dashboardBody(tabItems(
             selected = NULL
           ),
           plotOutput("density_plot")
-        )
+        ),
+      box(
+        title = "Frequency barchart",
+        solidHeader = TRUE,
+        status = "primary",
+        plotOutput("frequency_barchart")
       )
     ),
     hidden(div(id = "filter_row", fluidRow(

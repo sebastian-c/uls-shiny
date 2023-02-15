@@ -114,6 +114,13 @@ function(input, output, session) {
     
   })
   
+  output$frequency_barchart <- renderPlot({
+    fbplot <- ggplot(data(), aes(x = !!as.symbol(input$character_select))) + 
+      geom_bar()
+    
+    fbplot
+  })
+  
   output$text_nb_lines <- renderText({
     nb_lines <- nrow(data())
     paste("The dataset contains", nb_lines, "rows")
