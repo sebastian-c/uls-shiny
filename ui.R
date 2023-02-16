@@ -52,10 +52,12 @@ body <- dashboardBody(tabItems(tabItem(
           choices = NULL,
           selected = NULL
         ),
-        checkboxGroupInput(
+        pickerInput(
           inputId = "character_filter",
           label = "Select factors to include",
-          inline = TRUE
+          choices = NULL,
+          multiple = TRUE,
+          options = list(`actions-box` = TRUE)
         )
       )
     ))

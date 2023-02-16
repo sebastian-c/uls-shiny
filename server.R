@@ -18,6 +18,18 @@ function(input, output, session) {
       stringsAsFactors = FALSE
     )
     
+    if(length(getConditionColNames(df, is.numeric)) <= 2){
+      
+      showNotification("Data needs at least two numeric columns", type = "error")
+      return()
+    
+    } else if(length(getConditionColNames(df, is.character)) < 1){
+      
+      showNotification("Data needs at least one character column", type = "error")
+      return()
+    }
+
+    
     show("filter_div")
     show("density_div")
     show("frequency_div")
@@ -69,12 +81,11 @@ function(input, output, session) {
     char_options <-
       unique(uploaded_data()[, input$character_select])
     
-    updateCheckboxGroupInput(
+    updatePickerInput(
       session,
       inputId = "character_filter",
       choices = char_options,
       selected = char_options,
-      inline = TRUE
     )
     
     numeric_cols <- sapply(uploaded_data(), is.numeric)
