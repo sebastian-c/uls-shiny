@@ -20,4 +20,4 @@ The app contains:
 - [X] Numeric column selection for densityplot
 - [X] Character column selection for frequency bar chart
 - [X] Select character cols and numeric cols for ggplot
-- [ ] Submission of assignment
+- [X] Submission of assignment
