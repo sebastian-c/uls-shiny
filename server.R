@@ -18,7 +18,11 @@ function(input, output, session) {
       stringsAsFactors = FALSE
     )
     
-    show("filter_row")
+    show("filter_div")
+    show("density_div")
+    show("frequency_div")
+    show("plot_div")
+    
     
     #Check for one character column and at least 2 numeric columns
     

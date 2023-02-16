@@ -37,27 +37,30 @@ body <- dashboardBody(tabItems(tabItem(
         selected = ";"
       )
     ),
-    br(),
-    box(
-      title = "Filtering the dataset",
-      solidHeader = TRUE,
-      width = 12,
-      status = "primary",
-      #primary, success, info, warning, danger
-      selectInput(
-        inputId = "character_select",
-        label = "Select a character column",
-        choices = NULL,
-        selected = NULL
-      ),
-      checkboxGroupInput(
-        inputId = "character_filter",
-        label = "Select factors to include",
-        inline = TRUE
+    hidden(div(
+      id = "filter_div",
+      br(),
+      box(
+        title = "Filtering the dataset",
+        solidHeader = TRUE,
+        width = 12,
+        status = "primary",
+        #primary, success, info, warning, danger
+        selectInput(
+          inputId = "character_select",
+          label = "Select a character column",
+          choices = NULL,
+          selected = NULL
+        ),
+        checkboxGroupInput(
+          inputId = "character_filter",
+          label = "Select factors to include",
+          inline = TRUE
+        )
       )
-    )
+    ))
   ),
-  column(
+  hidden(div(id = "density_div", column(
     4,
     box(
       title = "Density plot",
@@ -72,8 +75,8 @@ body <- dashboardBody(tabItems(tabItem(
       ),
       plotOutput("density_plot")
     )
-  ),
-  column(
+  ))),
+  hidden(div(id = "frequency_div", column(
     4,
     box(
       title = "Frequency barchart",
@@ -82,9 +85,9 @@ body <- dashboardBody(tabItems(tabItem(
       status = "primary",
       plotOutput("frequency_barchart")
     )
-  )),
+  )))),
   br(),
-  fluidRow(
+  hidden(div(id = "plot_div", fluidRow(
     box(
       title = "Visualise data",
       solidHeader = TRUE,
@@ -137,7 +140,7 @@ body <- dashboardBody(tabItems(tabItem(
                  DT::dataTableOutput("table_data"))
       )
     )
-  )
+  )))
 )))
 
 dashboardPage(header = header,
